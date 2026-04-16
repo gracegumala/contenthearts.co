@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://contenthearts.co/sitemap.xml

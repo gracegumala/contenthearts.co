@@ -82,6 +82,43 @@
     countEls.forEach(el => countObserver.observe(el));
   }
 
+  /* ── Gallery Drag Scroll ────────────────────────────────── */
+  const gallery = document.getElementById('workGallery');
+  if (gallery) {
+    let isDown = false, startX = 0, scrollLeft = 0, moved = false;
+
+    gallery.addEventListener('mousedown', e => {
+      isDown = true; moved = false;
+      gallery.classList.add('dragging');
+      startX = e.pageX - gallery.getBoundingClientRect().left;
+      scrollLeft = gallery.scrollLeft;
+    });
+    document.addEventListener('mouseup', () => {
+      isDown = false;
+      gallery.classList.remove('dragging');
+    });
+    gallery.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - gallery.getBoundingClientRect().left;
+      const walk = (x - startX) * 1.4;
+      if (Math.abs(walk) > 4) moved = true;
+      gallery.scrollLeft = scrollLeft - walk;
+    });
+    // Prevent clicks from firing after a drag
+    gallery.addEventListener('click', e => {
+      if (moved) e.stopPropagation();
+    }, true);
+
+    const itemW = () => (gallery.querySelector('.cs-gallery-item')?.offsetWidth || 255) + 12;
+    document.getElementById('galleryPrev')?.addEventListener('click', () => {
+      gallery.scrollBy({ left: -itemW() * 2, behavior: 'smooth' });
+    });
+    document.getElementById('galleryNext')?.addEventListener('click', () => {
+      gallery.scrollBy({ left: itemW() * 2, behavior: 'smooth' });
+    });
+  }
+
   /* ── FAQ Accordion ──────────────────────────────────────── */
   document.querySelectorAll('.faq__trigger').forEach(trigger => {
     trigger.addEventListener('click', () => {

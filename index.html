@@ -5,6 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Hearts — Brand-Led Social Agency</title>
   <meta name="description" content="A Brand-Led Social Agency. We help ambitious brands build a social presence worth following.">
+  <link rel="canonical" href="https://contenthearts.co/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://contenthearts.co/" />
+  <meta property="og:title" content="Content Hearts — Brand-Led Social Agency" />
+  <meta property="og:description" content="A Brand-Led Social Agency. We help ambitious brands build a social presence worth following." />
+  <meta property="og:image" content="https://contenthearts.co/og-image.png" />
+  <meta property="og:site_name" content="Content Hearts" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@contentheartsco" />
+  <meta name="twitter:title" content="Content Hearts — Brand-Led Social Agency" />
+  <meta name="twitter:description" content="A Brand-Led Social Agency. We help ambitious brands build a social presence worth following." />
+  <meta name="twitter:image" content="https://contenthearts.co/og-image.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MarketingAgency",
+    "name": "Content Hearts",
+    "url": "https://contenthearts.co",
+    "logo": "https://contenthearts.co/logo/content-hearts-logo-colour.png",
+    "description": "A Brand-Led Social Agency. We help ambitious brands build a social presence worth following.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "SG"
+    },
+    "email": "admin@contenthearts.co",
+    "sameAs": [
+      "https://www.instagram.com/contentheartsco/",
+      "https://www.tiktok.com/@contentheartsco"
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css" />
@@ -14,7 +52,7 @@
   <!-- ── Navigation ─────────────────────────────────────── -->
   <nav class="nav" id="nav">
     <a href="index.html">
-      <img src="../logo/content-hearts-logo-colour.png" alt="Content Hearts" class="nav__logo-img">
+      <img src="../logo/content-hearts-logo-long-heart.png" alt="Content Hearts" class="nav__logo-img">
     </a>
     <ul class="nav__links">
       <li><a href="index.html" class="nav__link active">Home</a></li>
@@ -30,7 +68,7 @@
 
   <!-- Mobile Nav -->
   <div class="nav__mobile" id="mobileNav">
-    <a href="index.html"><img src="../logo/content-hearts-logo-colour.png" alt="Content Hearts" class="nav__logo-img" style="margin-bottom:1rem;"></a>
+    <a href="index.html"><img src="../logo/content-hearts-logo-long-heart.png" alt="Content Hearts" class="nav__logo-img nav__logo-img--mobile" style="margin-bottom:1rem;"></a>
     <a href="index.html" class="nav__link active">Home</a>
     <a href="services.html" class="nav__link">Services</a>
     <a href="about.html" class="nav__link">About</a>
@@ -228,44 +266,198 @@
     </div>
   </section>
 
+  <!-- ── Case Studies ─────────────────────────────────────── -->
+  <section class="section" id="work">
+    <div class="container">
+      <div class="sh fade-up">
+        <span class="sh__eyebrow">our work</span>
+        <h2 class="sh__title">Content that<br><em>performs.</em></h2>
+        <p class="sh__body">Real brands, real campaigns, real numbers. Here's a look at what we've created.</p>
+      </div>
+
+      <!-- Work Gallery -->
+      <div class="cs-gallery-wrap fade-up fade-up-d1">
+        <div class="cs-gallery-header">
+          <p class="cs-gallery-hint">Drag to explore</p>
+          <div class="cs-gallery-controls">
+            <button class="cs-gallery-btn" id="galleryPrev" aria-label="Previous">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            </button>
+            <button class="cs-gallery-btn" id="galleryNext" aria-label="Next">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="cs-gallery" id="workGallery">
+          <!--
+            TO ADD REAL CONTENT: inside each .cs-gallery-item, add a <video> or <img> before the overlay div.
+            Video: <video src="path/to/clip.mp4" autoplay muted loop playsinline></video>
+            Image: <img src="path/to/photo.jpg" alt="...">
+          -->
+
+          <!-- Yi Zun Noodle -->
+          <div class="cs-gallery-item">
+            <div class="cs-gallery-item__overlay">
+              <span class="cs-gallery-item__client">Yi Zun Noodle</span>
+              <p class="cs-gallery-item__caption">The reel that introduced Yi Zun to the world.</p>
+            </div>
+          </div>
+          <div class="cs-gallery-item">
+            <div class="cs-gallery-item__overlay">
+              <span class="cs-gallery-item__client">Yi Zun Noodle</span>
+              <p class="cs-gallery-item__caption">Noodles, nostalgia, and a brand worth following.</p>
+            </div>
+          </div>
+          <div class="cs-gallery-item">
+            <div class="cs-gallery-item__overlay">
+              <span class="cs-gallery-item__client">Yi Zun Noodle</span>
+              <p class="cs-gallery-item__caption">Founder-led content that built real trust.</p>
+            </div>
+          </div>
+
+          <!-- Accretive Learning -->
+          <div class="cs-gallery-item">
+            <div class="cs-gallery-item__overlay">
+              <span class="cs-gallery-item__client">Accretive Learning</span>
+              <p class="cs-gallery-item__caption">Brand-led content that made clients take notice.</p>
+            </div>
+          </div>
+          <div class="cs-gallery-item">
+            <div class="cs-gallery-item__overlay">
+              <span class="cs-gallery-item__client">Accretive Learning</span>
+              <p class="cs-gallery-item__caption">A content series built around real student stories.</p>
+            </div>
+          </div>
+          <div class="cs-gallery-item">
+            <div class="cs-gallery-item__overlay">
+              <span class="cs-gallery-item__client">Accretive Learning</span>
+              <p class="cs-gallery-item__caption">Turning expertise into scroll-stopping short form.</p>
+            </div>
+          </div>
+
+          <!-- Axiom Education -->
+          <div class="cs-gallery-item">
+            <div class="cs-gallery-item__overlay">
+              <span class="cs-gallery-item__client">Axiom Education</span>
+              <p class="cs-gallery-item__caption">Social strategy rooted in identity, not just trends.</p>
+            </div>
+          </div>
+          <div class="cs-gallery-item">
+            <div class="cs-gallery-item__overlay">
+              <span class="cs-gallery-item__client">Axiom Education</span>
+              <p class="cs-gallery-item__caption">The campaign that put their brand on the map.</p>
+            </div>
+          </div>
+          <div class="cs-gallery-item">
+            <div class="cs-gallery-item__overlay">
+              <span class="cs-gallery-item__client">Axiom Education</span>
+              <p class="cs-gallery-item__caption">Consistent, compelling content that kept audiences coming back.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-xl text-center fade-up">
+        <a href="contact.html" class="btn btn--dark">
+          Start Your Story
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Testimonials ────────────────────────────────────── -->
-  <section class="section">
+  <section class="section section--dark">
     <div class="container">
       <div class="sh--center fade-up">
         <span class="sh__eyebrow">client love</span>
-        <h2 class="sh__title">Don't just take<br><em>our word for it.</em></h2>
+        <h2 class="sh__title" style="color:var(--bg);">Don't just take<br><em>our word for it.</em></h2>
       </div>
-      <div class="tcards">
-        <div class="tcard fade-up fade-up-d1">
-          <div class="tcard__mark">"</div>
-          <p class="tcard__quote">They transformed how our brand shows up online. We finally have a social presence we're proud of.</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">D</div>
-            <div>
-              <div class="tcard__name">Dawn T.</div>
-              <div class="tcard__role">Founder, Accretive Learning</div>
+
+      <!-- Video Testimonials -->
+      <div class="testi-videos fade-up fade-up-d1">
+        <div class="vtcard">
+          <div class="vtcard__video">
+            <!--
+              TO ADD VIDEO: replace div below with iframe or <video> tag.
+              Example: <video src="path/to/testimonial1.mp4" controls poster="thumb.jpg"></video>
+              Example YouTube: <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+            -->
+            <div class="vtcard__video-overlay">
+              <div class="cs-play-btn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="vtcard__content">
+            <p class="vtcard__quote">"They transformed how our brand shows up online. We finally have a social presence we're proud of."</p>
+            <div class="vtcard__author">
+              <div class="vtcard__avatar">D</div>
+              <div>
+                <div class="vtcard__name">Dawn T.</div>
+                <div class="vtcard__role">Founder, Accretive Learning</div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="tcard fade-up fade-up-d2">
-          <div class="tcard__mark">"</div>
-          <p class="tcard__quote">The strategy was rooted in who we actually are — not just what was trending that week. That's rare.</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">A</div>
-            <div>
-              <div class="tcard__name">Ashley T.</div>
-              <div class="tcard__role">Founder, Axiom Education</div>
+        <div class="vtcard">
+          <div class="vtcard__video">
+            <!-- Replace with actual video -->
+            <div class="vtcard__video-overlay">
+              <div class="cs-play-btn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="vtcard__content">
+            <p class="vtcard__quote">"The strategy was rooted in who we actually are — not just what was trending that week. That's rare."</p>
+            <div class="vtcard__author">
+              <div class="vtcard__avatar">A</div>
+              <div>
+                <div class="vtcard__name">Ashley T.</div>
+                <div class="vtcard__role">Founder, Axiom Education</div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="tcard fade-up fade-up-d3">
-          <div class="tcard__mark">"</div>
-          <p class="tcard__quote">Engagement tripled in three months. More importantly — clients started referencing our social in conversations.</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">A</div>
-            <div>
-              <div class="tcard__name">Mdm Aisha T.</div>
-              <div class="tcard__role">Founder, Yi Zun Noodle</div>
+      </div>
+
+      <!-- Written Testimonials -->
+      <div class="testi-divider fade-up">
+        <p class="testi-divider__label">More kind words</p>
+        <div class="tcards">
+          <div class="tcard fade-up fade-up-d1">
+            <div class="tcard__mark">"</div>
+            <p class="tcard__quote">They transformed how our brand shows up online. We finally have a social presence we're proud of.</p>
+            <div class="tcard__author">
+              <div class="tcard__avatar">D</div>
+              <div>
+                <div class="tcard__name">Dawn T.</div>
+                <div class="tcard__role">Founder, Accretive Learning</div>
+              </div>
+            </div>
+          </div>
+          <div class="tcard fade-up fade-up-d2">
+            <div class="tcard__mark">"</div>
+            <p class="tcard__quote">The strategy was rooted in who we actually are — not just what was trending that week. That's rare.</p>
+            <div class="tcard__author">
+              <div class="tcard__avatar">A</div>
+              <div>
+                <div class="tcard__name">Ashley T.</div>
+                <div class="tcard__role">Founder, Axiom Education</div>
+              </div>
+            </div>
+          </div>
+          <div class="tcard fade-up fade-up-d3">
+            <div class="tcard__mark">"</div>
+            <p class="tcard__quote">Engagement tripled in three months. More importantly — clients started referencing our social in conversations.</p>
+            <div class="tcard__author">
+              <div class="tcard__avatar">A</div>
+              <div>
+                <div class="tcard__name">Mdm Aisha T.</div>
+                <div class="tcard__role">Founder, Yi Zun Noodle</div>
+              </div>
             </div>
           </div>
         </div>
@@ -293,7 +485,7 @@
     <div class="container">
       <div class="footer__grid">
         <div>
-          <img src="../logo/content-hearts-logo-white.png" alt="Content Hearts" class="footer__logo-img">
+          <img src="../logo/content-hearts-logo-long-heart.png" alt="Content Hearts" class="footer__logo-img">
           <p class="footer__tagline">Brand-Led Social for brands that want to be remembered, not just seen.</p>
         </div>
         <div>
