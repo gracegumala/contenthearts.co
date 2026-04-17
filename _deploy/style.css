@@ -1559,3 +1559,346 @@ em { font-style: italic; color: var(--terra); }
   .works-strip__item:last-child { border-bottom: none; }
   .cstudy__metrics { grid-template-columns: 1fr; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   CASE STUDY GALLERY + MODAL
+   ════════════════════════════════════════════════════════ */
+
+.case-section { padding-top: clamp(4rem, 7vw, 7rem); }
+
+.case-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.75rem, 1.2vw, 1.25rem);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.case-tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: var(--bg-dark);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  transition: transform 0.4s var(--ease);
+}
+.case-tile:hover { transform: scale(1.01); }
+.case-tile:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 3px;
+}
+
+.case-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s var(--ease), filter 0.4s var(--ease);
+}
+.case-tile:hover img { transform: scale(1.05); filter: brightness(0.55); }
+
+.case-tile__label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(to top, rgba(28,20,16,0.82) 0%, rgba(28,20,16,0) 100%);
+  color: var(--bg);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  opacity: 1;
+  transition: opacity 0.3s var(--ease);
+}
+.case-tile:hover .case-tile__label { opacity: 0; }
+
+.case-tile__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(28,20,16,0.92) 0%, rgba(28,20,16,0.55) 55%, rgba(28,20,16,0.25) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 1.5rem 1.5rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+  color: var(--bg);
+}
+.case-tile:hover .case-tile__overlay,
+.case-tile:focus-visible .case-tile__overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.case-tile__cat {
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 0.6rem;
+}
+.case-tile__name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--bg);
+  margin-bottom: 0.65rem;
+}
+.case-tile__desc {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: rgba(248,244,240,0.88);
+  margin-bottom: 1rem;
+  max-width: 92%;
+}
+.case-tile__cta {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bg);
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(248,244,240,0.6);
+}
+
+@media (max-width: 900px) {
+  .case-gallery { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .case-gallery { grid-template-columns: 1fr; gap: 0.85rem; }
+  .case-tile__label { font-size: 0.95rem; padding: 0.85rem 1rem; }
+  .case-tile__name { font-size: 1.25rem; }
+}
+
+/* ── Case Study Modal ──────────────────────────────────── */
+.case-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2rem);
+}
+.case-modal.open { display: flex; }
+
+.case-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18,13,10,0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: caseModalFade 0.3s var(--ease);
+}
+@keyframes caseModalFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.case-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(1080px, 100%);
+  background: var(--bg);
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.45);
+  overflow: hidden;
+  animation: caseModalRise 0.4s var(--ease);
+}
+@keyframes caseModalRise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.case-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(248,244,240,0.95);
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.case-modal__close:hover { background: var(--ink); color: var(--bg); transform: rotate(90deg); }
+.case-modal__close svg { width: 18px; height: 18px; }
+
+.case-modal__body { display: block; }
+
+.case-modal__hero {
+  position: relative;
+  aspect-ratio: 21 / 9;
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+.case-modal__hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.case-modal__hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(28,20,16,0.78) 0%, rgba(28,20,16,0.1) 55%, transparent 100%);
+}
+.case-modal__heroText {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+  color: var(--bg);
+  z-index: 1;
+}
+.case-modal__cat {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 0.8rem;
+}
+.case-modal__name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--bg);
+  margin: 0 0 0.5rem;
+}
+.case-modal__tag {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: rgba(248,244,240,0.9);
+  max-width: 640px;
+  margin: 0;
+}
+
+.case-modal__content {
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+.case-modal__storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.case-modal__storyBlock h3 {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin: 0 0 0.85rem;
+}
+.case-modal__storyBlock p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-lt);
+  margin: 0;
+}
+
+.case-modal__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+.case-modal__metric {
+  padding: 1.5rem 1.25rem;
+  background: var(--bg-alt, #f4efe8);
+  border: 1px solid var(--border-lt, rgba(28,20,16,0.08));
+}
+.case-modal__metric--hero {
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+}
+.case-modal__metricNum {
+  font-family: var(--font-serif);
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.35rem;
+}
+.case-modal__metric--hero .case-modal__metricNum { color: var(--bg); }
+.case-modal__metricNum span {
+  font-style: italic;
+  color: var(--terra);
+  font-size: 0.85em;
+  margin-left: 0.06em;
+}
+.case-modal__metricLabel {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--ink-lt);
+}
+.case-modal__metric--hero .case-modal__metricLabel { color: rgba(248,244,240,0.75); }
+
+.case-modal__note {
+  font-size: 0.78rem;
+  color: var(--ink-lt);
+  padding: 0.9rem 1.1rem;
+  background: var(--bg-alt, #f4efe8);
+  margin-bottom: clamp(1.75rem, 3vw, 2.25rem);
+}
+.case-modal__note strong { color: var(--ink); }
+
+.case-modal__videosTitle {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin: 0 0 1rem;
+}
+
+.case-modal__videos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+.case-modal__videos .cs-gallery-item {
+  flex: initial;
+  aspect-ratio: 9 / 16;
+  scroll-snap-align: none;
+}
+
+.case-modal__cta {
+  margin-top: clamp(2rem, 3.5vw, 2.5rem);
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 800px) {
+  .case-modal__storyGrid { grid-template-columns: 1fr; }
+  .case-modal__metrics { grid-template-columns: repeat(2, 1fr); }
+  .case-modal__videos { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .case-modal__hero { aspect-ratio: 16 / 10; }
+}
+@media (max-width: 560px) {
+  .case-modal__metrics { grid-template-columns: 1fr; }
+  .case-modal__hero { aspect-ratio: 4 / 3; }
+  .case-modal__name { font-size: 1.75rem; }
+}
