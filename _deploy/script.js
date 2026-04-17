@@ -135,12 +135,14 @@
     return '';
   }
 
-  function openModal(client, desc, platform, videoId) {
+  function openModal(client, desc, platform, videoId, opts) {
     if (!modal) return;
-    modalClient.textContent = client || '';
-    modalDesc.textContent   = desc   || '';
+    const fullscreen = !!(opts && opts.fullscreen);
+    modalClient.textContent = fullscreen ? '' : (client || '');
+    modalDesc.textContent   = fullscreen ? '' : (desc   || '');
     // Switch portrait layout for TikTok
     modal.classList.toggle('is-tiktok', platform === 'tiktok');
+    modal.classList.toggle('is-fullscreen', fullscreen);
     if (modalVideoWrap) {
       const embed = buildEmbed(platform, videoId);
       modalVideoWrap.innerHTML = embed ||
@@ -154,8 +156,12 @@
     if (!modal) return;
     modal.classList.remove('open');
     modal.classList.remove('is-tiktok');
-    document.body.style.overflow = '';
+    modal.classList.remove('is-fullscreen');
     if (modalVideoWrap) modalVideoWrap.innerHTML = ''; // stop video
+    // Restore body scroll only if the case modal isn't still open behind it
+    if (!caseModal || !caseModal.classList.contains('open')) {
+      document.body.style.overflow = '';
+    }
   }
 
   // Gallery tile + testimonial vtcard clicks (delegated to handle dynamically injected tiles)
@@ -163,7 +169,8 @@
     const item = e.target.closest('.cs-gallery-item[data-client]');
     if (item) {
       if (galleryMoved) { galleryMoved = false; return; }
-      openModal(item.dataset.client, item.dataset.desc, item.dataset.videoPlatform, item.dataset.videoId);
+      const insideCaseModal = !!item.closest('#caseModal');
+      openModal(item.dataset.client, item.dataset.desc, item.dataset.videoPlatform, item.dataset.videoId, { fullscreen: insideCaseModal });
       return;
     }
     const card = e.target.closest('.vtcard[data-video-platform]');
@@ -296,7 +303,7 @@
       cat: "Education · English Language",
       name: "The Write Connection",
       tag: "Teaching an existing marketing team how to do social — then watching leads climb.",
-      image: "images/case%20study/The%20Write%20Connection.png",
+      image: "images/case%20study/The%20Write%20Connection.jpeg",
       challenge: "TWC already had an in-house marketing department, but the team was not adept in social media. They had been doing mostly static posts and needed a real social strategy.",
       did: "We ran the strategy, produced the content, and upskilled their team along the way — so they could eventually produce the strategy in-house.",
       metrics: [
