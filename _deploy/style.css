@@ -617,44 +617,90 @@ em { font-style: italic; color: var(--terra); }
 
 /* ── CTA Banner ────────────────────────────────────────── */
 .cta-banner {
-  background: var(--bg-dark); color: var(--bg);
-  padding-block: clamp(5rem, 11vw, 11rem);
-  text-align: center; overflow: hidden; position: relative;
-}
-.cta-banner__photo {
-  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  position: relative; isolation: isolate;
+  padding-block: clamp(6rem, 12vw, 12rem);
+  text-align: center; overflow: hidden;
+  color: var(--ink);
   background:
-    radial-gradient(ellipse at 60% 100%, rgba(28,20,16,0.0) 0%, rgba(28,20,16,0.72) 70%),
-    url('images/cta-bg.jpg') 65% 80% / cover no-repeat;
-  opacity: 0.55;
+    radial-gradient(ellipse 80% 60% at 50% 120%, rgba(200,90,58,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(143,163,125,0.14) 0%, transparent 55%),
+    linear-gradient(180deg, #F3E8DC 0%, #EDD9C6 45%, #E7CDB3 100%);
 }
-.cta-banner::before {
-  content: '';
-  position: absolute; bottom: -20%; left: 50%; transform: translateX(-50%);
-  width: 60%; aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(200,90,58,0.14) 0%, transparent 70%);
-  pointer-events: none; z-index: 0;
+.cta-banner__grain {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  opacity: 0.35; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.cta-banner__glow {
+  position: absolute; width: 55%; aspect-ratio: 1;
+  border-radius: 50%; pointer-events: none; z-index: 0;
+  filter: blur(60px); opacity: 0.75;
+  will-change: transform;
+}
+.cta-banner__glow--left {
+  left: -15%; top: -20%;
+  background: radial-gradient(circle, rgba(200,90,58,0.38) 0%, transparent 65%);
+  animation: ctaDrift 16s ease-in-out infinite alternate;
+}
+.cta-banner__glow--right {
+  right: -15%; bottom: -25%;
+  background: radial-gradient(circle, rgba(143,163,125,0.42) 0%, transparent 65%);
+  animation: ctaDrift 20s ease-in-out infinite alternate-reverse;
+}
+@keyframes ctaDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(4%, 3%) scale(1.08); }
+}
+.cta-banner__mark {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 1.25rem;
+  font-family: var(--font-serif); font-size: 1.4rem;
+  background: linear-gradient(135deg, var(--sage) 0%, var(--terra) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem; line-height: 1;
+}
+.cta-banner__mark::before,
+.cta-banner__mark::after {
+  content: ''; display: inline-block;
+  width: clamp(2rem, 4vw, 3.5rem); height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,90,58,0.5), transparent);
 }
 .cta-banner__hand {
   font-family: var(--font-sans);
-  font-size: 0.65rem; font-weight: 600;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--terra); display: block; margin-bottom: 1.5rem;
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--terra-dk); display: block; margin-bottom: 1.75rem;
 }
 .cta-banner__title {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 6rem);
-  font-weight: 400; line-height: 1.05;
-  letter-spacing: -0.025em; color: var(--bg);
+  font-size: clamp(2.75rem, 6.2vw, 6.5rem);
+  font-weight: 400; line-height: 1.02;
+  letter-spacing: -0.028em; color: var(--ink);
 }
-.cta-banner__title em { font-style: italic; color: var(--terra); }
+.cta-banner__title em {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--terra) 0%, var(--terra-dk) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .cta-banner__sub {
-  max-width: 400px; margin-inline: auto; margin-top: 1.5rem;
-  color: rgba(248,244,240,0.45); font-size: 0.95rem;
+  max-width: 440px; margin-inline: auto; margin-top: 1.75rem;
+  color: var(--ink-lt); font-size: 1rem; line-height: 1.6;
 }
 .cta-banner__btns {
   display: flex; gap: 1rem;
-  justify-content: center; flex-wrap: wrap; margin-top: 3rem;
+  justify-content: center; flex-wrap: wrap; margin-top: 2.75rem;
+}
+.btn--lg {
+  padding: 1.1rem 2.4rem; font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  box-shadow: 0 14px 34px -10px rgba(200,90,58,0.55), 0 2px 0 rgba(0,0,0,0.04) inset;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), background 0.25s;
+}
+.btn--lg:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 44px -10px rgba(200,90,58,0.65), 0 2px 0 rgba(0,0,0,0.04) inset;
 }
 
 /* ── Footer ────────────────────────────────────────────── */
