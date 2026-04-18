@@ -158,10 +158,7 @@
     modal.classList.remove('is-tiktok');
     modal.classList.remove('is-fullscreen');
     if (modalVideoWrap) modalVideoWrap.innerHTML = ''; // stop video
-    // Restore body scroll only if the case modal isn't still open behind it
-    if (!caseModal || !caseModal.classList.contains('open')) {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = '';
   }
 
   // Gallery tile + testimonial vtcard clicks (delegated to handle dynamically injected tiles)
@@ -169,8 +166,8 @@
     const item = e.target.closest('.cs-gallery-item[data-client]');
     if (item) {
       if (galleryMoved) { galleryMoved = false; return; }
-      const insideCaseModal = !!item.closest('#caseModal');
-      openModal(item.dataset.client, item.dataset.desc, item.dataset.videoPlatform, item.dataset.videoId, { fullscreen: insideCaseModal });
+      const insideCasePanel = !!item.closest('.case-panel');
+      openModal(item.dataset.client, item.dataset.desc, item.dataset.videoPlatform, item.dataset.videoId, { fullscreen: insideCasePanel });
       return;
     }
     const card = e.target.closest('.vtcard[data-video-platform]');
@@ -383,9 +380,9 @@
 
   function renderCaseStudy(cs) {
     const metricsHtml = cs.metrics.map(m =>
-      `<div class="case-modal__metric${m.hero ? ' case-modal__metric--hero' : ''}">
-         <div class="case-modal__metricNum">${m.num}</div>
-         <div class="case-modal__metricLabel">${esc(m.label)}</div>
+      `<div class="case-panel__metric${m.hero ? ' case-panel__metric--hero' : ''}">
+         <div class="case-panel__metricNum">${m.num}</div>
+         <div class="case-panel__metricLabel">${esc(m.label)}</div>
        </div>`
     ).join('');
 
@@ -397,68 +394,127 @@
     ).join('');
 
     return `
-      <div class="case-modal__hero">
-        <img src="${cs.image}" alt="${esc(cs.name)}">
-        <div class="case-modal__heroText">
-          <span class="case-modal__cat">${esc(cs.cat)}</span>
-          <h2 class="case-modal__name">${esc(cs.name)}</h2>
-          <p class="case-modal__tag">${cs.tag}</p>
-        </div>
-      </div>
-      <div class="case-modal__content">
-        <div class="case-modal__storyGrid">
-          <div class="case-modal__storyBlock">
-            <h3>The challenge</h3>
-            <p>${esc(cs.challenge)}</p>
-          </div>
-          <div class="case-modal__storyBlock">
-            <h3>What we did</h3>
-            <p>${esc(cs.did)}</p>
+      <div class="case-panel__inner">
+        <button class="case-panel__close" type="button" aria-label="Close case study">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="case-panel__visual">
+          <img src="${cs.image}" alt="${esc(cs.name)}">
+          <div class="case-panel__visualText">
+            <span class="case-panel__cat">${esc(cs.cat)}</span>
+            <h3 class="case-panel__name">${esc(cs.name)}</h3>
+            <p class="case-panel__tag">${cs.tag}</p>
           </div>
         </div>
-        <div class="case-modal__metrics">${metricsHtml}</div>
-        <div class="case-modal__note">${cs.note}</div>
-        <h3 class="case-modal__videosTitle">Video samples</h3>
-        <div class="case-modal__videos">${videosHtml}</div>
-        <div class="case-modal__cta">
-          <a href="contact.html" class="btn btn--dark">Work with us</a>
+        <div class="case-panel__content">
+          <div class="case-panel__metricsTop">${metricsHtml}</div>
+          <div class="case-panel__storyGrid">
+            <div class="case-panel__storyBlock">
+              <h3>The challenge</h3>
+              <p>${esc(cs.challenge)}</p>
+            </div>
+            <div class="case-panel__storyBlock">
+              <h3>What we did</h3>
+              <p>${esc(cs.did)}</p>
+            </div>
+          </div>
+          <div class="case-panel__note">${cs.note}</div>
+          <div class="case-panel__videosWrap">
+            <h3>Video samples</h3>
+            <div class="case-panel__videos">${videosHtml}</div>
+          </div>
         </div>
       </div>
     `;
   }
 
-  const caseModal     = document.getElementById('caseModal');
-  const caseModalBody = document.getElementById('caseModalBody');
-  const caseModalClose= document.getElementById('caseModalClose');
-  const caseModalBd   = document.getElementById('caseModalBackdrop');
+  const gallery2     = document.getElementById('caseGallery');
+  const casePanel    = document.getElementById('casePanel');
+  let   activeTileId = null;
 
-  function openCaseModal(id) {
-    const cs = CASE_STUDIES[id];
-    if (!cs || !caseModal) return;
-    caseModalBody.innerHTML = renderCaseStudy(cs);
-    caseModalBody.scrollTop = 0;
-    caseModal.classList.add('open');
-    caseModal.scrollTop = 0;
-    document.body.style.overflow = 'hidden';
-  }
-  function closeCaseModal() {
-    if (!caseModal) return;
-    caseModal.classList.remove('open');
-    if (caseModalBody) caseModalBody.innerHTML = '';
-    if (!modal || !modal.classList.contains('open')) {
-      document.body.style.overflow = '';
+  // Find the last tile in the row containing the given tile, then insert panel after it.
+  function placePanelAfterRow(tile) {
+    if (!gallery2 || !casePanel) return;
+    const tiles = [...gallery2.querySelectorAll('.case-tile')];
+    const idx   = tiles.indexOf(tile);
+    if (idx === -1) return;
+    const tileTop = tile.offsetTop;
+    let lastInRow = tile;
+    for (let i = idx + 1; i < tiles.length; i++) {
+      if (tiles[i].offsetTop === tileTop) lastInRow = tiles[i];
+      else break;
     }
+    if (casePanel.previousElementSibling !== lastInRow) {
+      lastInRow.after(casePanel);
+    }
+  }
+
+  function closeCasePanel(scroll) {
+    if (!casePanel) return;
+    casePanel.classList.remove('open');
+    casePanel.setAttribute('aria-hidden', 'true');
+    activeTileId = null;
+    document.querySelectorAll('.case-tile.is-active').forEach(t => t.classList.remove('is-active'));
+    // Clear content after the collapse animation so the height transition can play
+    setTimeout(() => {
+      if (!casePanel.classList.contains('open')) casePanel.innerHTML = '';
+    }, 550);
+  }
+
+  function openCasePanel(tile) {
+    const id = tile.dataset.caseId;
+    const cs = CASE_STUDIES[id];
+    if (!cs || !casePanel) return;
+
+    // Toggle close if same tile clicked again
+    if (activeTileId === id && casePanel.classList.contains('open')) {
+      closeCasePanel();
+      return;
+    }
+
+    document.querySelectorAll('.case-tile.is-active').forEach(t => t.classList.remove('is-active'));
+    tile.classList.add('is-active');
+    activeTileId = id;
+
+    placePanelAfterRow(tile);
+    casePanel.innerHTML = renderCaseStudy(cs);
+    casePanel.setAttribute('aria-hidden', 'false');
+    // Force reflow so max-height transition kicks in cleanly
+    void casePanel.offsetHeight;
+    casePanel.classList.add('open');
+
+    // Wire up the close button inside the freshly injected markup
+    casePanel.querySelector('.case-panel__close')?.addEventListener('click', () => closeCasePanel(true));
+
+    // Smooth scroll so the panel comes into view
+    setTimeout(() => {
+      const rect = casePanel.getBoundingClientRect();
+      const needsScroll = rect.top < 80 || rect.top > window.innerHeight - 200;
+      if (needsScroll) {
+        window.scrollTo({ top: window.scrollY + rect.top - 120, behavior: 'smooth' });
+      }
+    }, 100);
   }
 
   document.querySelectorAll('.case-tile[data-case-id]').forEach(tile => {
-    tile.addEventListener('click', () => openCaseModal(tile.dataset.caseId));
+    tile.addEventListener('click', () => openCasePanel(tile));
   });
-  caseModalClose?.addEventListener('click', closeCaseModal);
-  caseModalBd?.addEventListener('click', closeCaseModal);
+
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && caseModal?.classList.contains('open') && !modal?.classList.contains('open')) {
-      closeCaseModal();
+    if (e.key === 'Escape' && casePanel?.classList.contains('open') && !modal?.classList.contains('open')) {
+      closeCasePanel();
     }
+  });
+
+  // Reposition panel if window width changes row boundaries
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    if (!casePanel?.classList.contains('open') || !activeTileId) return;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const tile = document.querySelector(`.case-tile[data-case-id="${activeTileId}"]`);
+      if (tile) placePanelAfterRow(tile);
+    }, 120);
   });
 
   /* ── FAQ Accordion ──────────────────────────────────────── */

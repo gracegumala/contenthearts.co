@@ -62,9 +62,9 @@
   <!-- ── Case Study Gallery ─────────────────────────────── -->
   <section class="section case-section">
     <div class="container">
-      <div class="sh fade-up">
+      <div class="case-intro fade-up">
         <span class="sh__eyebrow">the work</span>
-        <h2 class="sh__title">Click to explore<br><em>each story.</em></h2>
+        <p class="case-hint">Click any tile to expand the full case study.</p>
       </div>
 
       <div class="case-gallery fade-up fade-up-d1" id="caseGallery">
@@ -260,16 +260,8 @@
     </div>
   </div>
 
-  <!-- ── Case Study Modal ──────────────────────────────────── -->
-  <div class="case-modal" id="caseModal" role="dialog" aria-modal="true" aria-label="Case study details">
-    <div class="case-modal__backdrop" id="caseModalBackdrop"></div>
-    <article class="case-modal__panel">
-      <button class="case-modal__close" id="caseModalClose" aria-label="Close">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-      <div class="case-modal__body" id="caseModalBody"></div>
-    </article>
-  </div>
+  <!-- Inline expand panel (moved into the gallery by JS) -->
+  <div class="case-panel" id="casePanel" aria-hidden="true"></div>
 
   <script src="script.js"></script>
 </body>
