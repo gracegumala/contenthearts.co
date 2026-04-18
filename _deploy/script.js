@@ -418,9 +418,8 @@
               <p>${esc(cs.did)}</p>
             </div>
           </div>
-          <div class="case-panel__note">${cs.note}</div>
           <div class="case-panel__videosWrap">
-            <h3>Video samples</h3>
+            <h3>Featured videos</h3>
             <div class="case-panel__videos">${videosHtml}</div>
           </div>
         </div>
