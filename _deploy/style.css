@@ -918,18 +918,33 @@ body:has(.nav__mobile.open) .nav__hamburger span:nth-child(3) { transform: trans
 .stats-strip__label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,244,240,0.3); margin-top: 0.75rem; }
 
 /* ── Service detail (services page) ───────────────────── */
-.service-detail { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(3rem,6vw,6rem); align-items: start; padding-block: clamp(3.5rem,5vw,5.5rem); border-bottom: 1px solid var(--border); }
+.service-detail { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem,5vw,6rem); align-items: center; padding-block: clamp(4rem,6vw,7rem); border-bottom: 1px solid var(--border); }
 .service-detail:last-of-type { border-bottom: none; }
+.service-detail:nth-child(even) .sd__media { order: 2; }
+
+.sd__media { aspect-ratio: 4/5; overflow: hidden; border-radius: 8px; position: relative; }
+.sd__media > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ── Service carousel ──────────────────────────────────── */
+.sd__media--carousel .sd__slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease; display: block; }
+.sd__media--carousel .sd__slide.is-active { opacity: 1; }
+.sd__carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 2.25rem; height: 2.25rem; border-radius: 50%; background: rgba(248,244,240,0.88); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: background 0.2s; }
+.sd__carousel-btn:hover { background: var(--bg); }
+.sd__carousel-prev { left: 0.75rem; }
+.sd__carousel-next { right: 0.75rem; }
+.sd__carousel-btn svg { width: 14px; height: 14px; }
+.sd__dots { position: absolute; bottom: 0.85rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.4rem; z-index: 2; }
+.sd__dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(248,244,240,0.4); cursor: pointer; transition: background 0.2s; }
+.sd__dot.is-active { background: var(--bg); }
+
 .sd__eyebrow { font-family: var(--font-sans); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 1rem; }
 .sd__title { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.5rem); font-weight: 400; line-height: 1.15; }
 .sd__title em { font-style: italic; color: var(--terra); }
-.sd__body { font-size: 0.9rem; margin-top: 1rem; max-width: 340px; line-height: 1.8; }
-.sd__features { display: flex; flex-direction: column; }
-.sd__feature { display: grid; grid-template-columns: 1.5rem 1fr; gap: 1rem; align-items: start; padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
+.sd__body { font-size: 0.9rem; margin-top: 1rem; line-height: 1.8; color: var(--ink-lt); }
+.sd__features { list-style: none; padding: 0; margin: 1.75rem 0 0; }
+.sd__feature { display: flex; align-items: center; gap: 0.85rem; padding: 0.8rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; font-weight: 500; color: var(--ink); }
 .sd__feature:first-child { border-top: 1px solid var(--border); }
-.sd__feature-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--terra); margin-top: 0.55rem; }
-.sd__feature-name { font-size: 0.83rem; font-weight: 600; color: var(--ink); margin-bottom: 0.15rem; }
-.sd__feature-desc { font-size: 0.8rem; color: var(--ink-lt); line-height: 1.65; }
+.sd__feature-dot { width: 5px; height: 5px; min-width: 5px; border-radius: 50%; background: var(--terra); }
 
 /* ── Pricing ───────────────────────────────────────────── */
 .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 5rem; }
@@ -1015,7 +1030,8 @@ body:has(.nav__mobile.open) .nav__hamburger span:nth-child(3) { transform: trans
   .story-grid { grid-template-columns: 1fr; gap: 3rem; }
   .values-grid { grid-template-columns: 1fr; }
   .values-grid__left { position: static; }
-  .service-detail { grid-template-columns: 1fr; gap: 2.5rem; }
+  .service-detail { grid-template-columns: 1fr; gap: 2rem; }
+  .service-detail:nth-child(even) .sd__media { order: unset; }
   .contact-grid { grid-template-columns: 1fr; gap: 3.5rem; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
 }

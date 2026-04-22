@@ -536,6 +536,25 @@
     }, 120);
   });
 
+  /* ── Service Image Carousel ─────────────────────────────── */
+  document.querySelectorAll('.sd__media--carousel').forEach(carousel => {
+    const slides  = [...carousel.querySelectorAll('.sd__slide')];
+    const dots    = [...carousel.querySelectorAll('.sd__dot')];
+    let current   = 0;
+
+    function goTo(n) {
+      slides[current].classList.remove('is-active');
+      dots[current]?.classList.remove('is-active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('is-active');
+      dots[current]?.classList.add('is-active');
+    }
+
+    carousel.querySelector('.sd__carousel-prev')?.addEventListener('click', () => goTo(current - 1));
+    carousel.querySelector('.sd__carousel-next')?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  });
+
   /* ── FAQ Accordion ──────────────────────────────────────── */
   document.querySelectorAll('.faq__trigger').forEach(trigger => {
     trigger.addEventListener('click', () => {
