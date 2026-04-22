@@ -343,8 +343,8 @@ body:has(.nav__mobile.open) .nav__hamburger span:nth-child(3) { transform: trans
 }
 .philosophy__stroke {
   position: absolute;
-  left: -2%; right: -2%; bottom: -0.12em;
-  width: 104%; height: 0.55em;
+  left: -2%; right: -2%; bottom: -0.26em;
+  width: 104%; height: 0.45em;
   color: var(--terra);
   overflow: visible;
   pointer-events: none;
@@ -357,21 +357,6 @@ body:has(.nav__mobile.open) .nav__hamburger span:nth-child(3) { transform: trans
 .philosophy .fade-up.visible .philosophy__stroke path { stroke-dashoffset: 0; }
 .philosophy .fade-up.visible .philosophy__title > .philosophy__ink .philosophy__stroke path { transition-delay: 0.5s; }
 .philosophy .fade-up.visible .philosophy__title em .philosophy__ink .philosophy__stroke path { transition-delay: 0.95s; }
-
-/* Rotating editorial asterisk ornament */
-.philosophy__ornament {
-  position: absolute;
-  top: clamp(2rem, 5vw, 5rem);
-  right: clamp(1.5rem, 6vw, 6rem);
-  width: clamp(80px, 9vw, 140px);
-  height: clamp(80px, 9vw, 140px);
-  color: var(--terra);
-  opacity: 0.14;
-  animation: philoSpin 24s linear infinite;
-  pointer-events: none;
-  z-index: 0;
-}
-@keyframes philoSpin { to { transform: rotate(360deg); } }
 
 /* Breathing terracotta halo behind the copy */
 .philosophy__blob {
@@ -390,29 +375,8 @@ body:has(.nav__mobile.open) .nav__hamburger span:nth-child(3) { transform: trans
   50%      { transform: translate(3%, -4%) scale(1.08); opacity: 1; }
 }
 
-/* Ambient serif word marquee below the content */
-.philosophy-marquee {
-  margin-top: clamp(3rem, 6vw, 5rem);
-  overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-}
-.philosophy-marquee__track {
-  display: flex;
-  width: max-content;
-  animation: philoMarquee 40s linear infinite;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(1.8rem, 4.2vw, 4.2rem);
-  color: var(--ink);
-  opacity: 0.07;
-  white-space: nowrap;
-  letter-spacing: -0.01em;
-}
-.philosophy-marquee__track span { padding-right: 0.5rem; }
-@keyframes philoMarquee { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
-  .philosophy__ornament, .philosophy__blob, .philosophy-marquee__track { animation: none; }
+  .philosophy__blob { animation: none; }
   .philosophy__stroke path { transition: none; }
 }
 
