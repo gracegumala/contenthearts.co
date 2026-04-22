@@ -555,6 +555,24 @@
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
   });
 
+  /* ── About Story Carousel ───────────────────────────────── */
+  document.querySelectorAll('.about-img--carousel').forEach(carousel => {
+    const slides = [...carousel.querySelectorAll('.abt-slide')];
+    if (!slides.length) return;
+    let current = 0;
+    let timer = null;
+    function goTo(n) {
+      slides[current].classList.remove('is-active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('is-active');
+    }
+    function startAuto() { timer = setInterval(() => goTo(current + 1), 4000); }
+    function stopAuto() { clearInterval(timer); }
+    carousel.querySelector('.abt-prev')?.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+    carousel.querySelector('.abt-next')?.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+    startAuto();
+  });
+
   /* ── FAQ Accordion ──────────────────────────────────────── */
   document.querySelectorAll('.faq__trigger').forEach(trigger => {
     trigger.addEventListener('click', () => {
