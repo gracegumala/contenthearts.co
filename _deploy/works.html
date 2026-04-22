@@ -67,9 +67,19 @@
         <p class="case-hint">Click any tile to expand the full case study.</p>
       </div>
 
-      <div class="case-gallery fade-up fade-up-d1" id="caseGallery">
+      <div class="case-filter fade-up fade-up-d1" id="caseFilter" role="group" aria-label="Filter by industry">
+        <button class="case-filter__btn is-active" data-filter="all">All</button>
+        <button class="case-filter__btn" data-filter="fnb">F&amp;B</button>
+        <button class="case-filter__btn" data-filter="pets">Pets</button>
+        <button class="case-filter__btn" data-filter="finance">Finance</button>
+        <button class="case-filter__btn" data-filter="education">Education</button>
+        <button class="case-filter__btn" data-filter="home">Home</button>
+        <button class="case-filter__btn" data-filter="skincare">Skincare</button>
+      </div>
 
-        <button class="case-tile" data-case-id="yi-zun-noodle" aria-label="View Yi Zun Noodle case study">
+      <div class="case-gallery fade-up fade-up-d2" id="caseGallery">
+
+        <button class="case-tile" data-case-id="yi-zun-noodle" data-industry="fnb" aria-label="View Yi Zun Noodle case study">
           <img src="images/case%20study/Yi%20Zun.png" alt="Yi Zun Noodle" loading="lazy">
           <span class="case-tile__label">Yi Zun Noodle</span>
           <div class="case-tile__overlay">
@@ -80,7 +90,7 @@
           </div>
         </button>
 
-        <button class="case-tile" data-case-id="seoul-restaurant-group" aria-label="View Seoul Restaurant Group case study">
+        <button class="case-tile" data-case-id="seoul-restaurant-group" data-industry="fnb" aria-label="View Seoul Restaurant Group case study">
           <img src="images/case%20study/Seoul%20&amp;%20So.png" alt="Seoul Restaurant Group" loading="lazy">
           <span class="case-tile__label">Seoul &amp; So</span>
           <div class="case-tile__overlay">
@@ -91,7 +101,7 @@
           </div>
         </button>
 
-        <button class="case-tile" data-case-id="annies-pantry" aria-label="View Annie's Pantry case study">
+        <button class="case-tile" data-case-id="annies-pantry" data-industry="pets" aria-label="View Annie's Pantry case study">
           <img src="images/case%20study/Annie's%20Pantry.png" alt="Annie's Pantry" loading="lazy">
           <span class="case-tile__label">Annie's Pantry</span>
           <div class="case-tile__overlay">
@@ -102,7 +112,7 @@
           </div>
         </button>
 
-        <button class="case-tile" data-case-id="moneyowl" aria-label="View MoneyOwl case study">
+        <button class="case-tile" data-case-id="moneyowl" data-industry="finance" aria-label="View MoneyOwl case study">
           <img src="images/case%20study/MoneyOwl.png" alt="MoneyOwl" loading="lazy">
           <span class="case-tile__label">MoneyOwl</span>
           <div class="case-tile__overlay">
@@ -113,7 +123,7 @@
           </div>
         </button>
 
-        <button class="case-tile" data-case-id="axiom-education" aria-label="View Axiom Education case study">
+        <button class="case-tile" data-case-id="axiom-education" data-industry="education" aria-label="View Axiom Education case study">
           <img src="images/case%20study/Axiom.webp" alt="Axiom Education" loading="lazy">
           <span class="case-tile__label">Axiom Education</span>
           <div class="case-tile__overlay">
@@ -124,7 +134,7 @@
           </div>
         </button>
 
-        <button class="case-tile" data-case-id="supergreen" aria-label="View Supergreen case study">
+        <button class="case-tile" data-case-id="supergreen" data-industry="fnb" aria-label="View Supergreen case study">
           <img src="images/case%20study/supergreen.avif" alt="Supergreen" loading="lazy">
           <span class="case-tile__label">Supergreen</span>
           <div class="case-tile__overlay">
@@ -135,7 +145,7 @@
           </div>
         </button>
 
-        <button class="case-tile" data-case-id="the-write-connection" aria-label="View The Write Connection case study">
+        <button class="case-tile" data-case-id="the-write-connection" data-industry="education" aria-label="View The Write Connection case study">
           <img src="images/case%20study/The%20Write%20Connection.jpeg" alt="The Write Connection" loading="lazy">
           <span class="case-tile__label">The Write Connection</span>
           <div class="case-tile__overlay">
@@ -146,7 +156,7 @@
           </div>
         </button>
 
-        <button class="case-tile" data-case-id="esperto-paintworks" aria-label="View Esperto Paintworks case study">
+        <button class="case-tile" data-case-id="esperto-paintworks" data-industry="home" aria-label="View Esperto Paintworks case study">
           <img src="images/case%20study/Esperto.jpg" alt="Esperto Paintworks" loading="lazy">
           <span class="case-tile__label">Esperto Paintworks</span>
           <div class="case-tile__overlay">
@@ -157,7 +167,7 @@
           </div>
         </button>
 
-        <button class="case-tile" data-case-id="style-degree" aria-label="View Style Degree case study">
+        <button class="case-tile" data-case-id="style-degree" data-industry="home" aria-label="View Style Degree case study">
           <img src="images/case%20study/Styledegree.png" alt="Style Degree" loading="lazy">
           <span class="case-tile__label">Style Degree</span>
           <div class="case-tile__overlay">
@@ -168,7 +178,7 @@
           </div>
         </button>
 
-        <button class="case-tile" data-case-id="iyla-collective" aria-label="View IYLA Collective case study">
+        <button class="case-tile" data-case-id="iyla-collective" data-industry="skincare" aria-label="View IYLA Collective case study">
           <img src="images/case%20study/Iyla.png" alt="IYLA Collective" loading="lazy">
           <span class="case-tile__label">IYLA Collective</span>
           <div class="case-tile__overlay">
