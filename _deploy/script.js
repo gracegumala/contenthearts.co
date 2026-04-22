@@ -499,6 +499,26 @@
     tile.addEventListener('click', () => openCasePanel(tile));
   });
 
+  /* ── Industry Filter ──────────────────────────────────── */
+  const filterBtns = document.querySelectorAll('.case-filter__btn');
+  const industryTiles = document.querySelectorAll('.case-tile[data-industry]');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      filterBtns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      if (filter === 'all') {
+        industryTiles.forEach(t => t.classList.remove('case-tile--hidden'));
+      } else {
+        industryTiles.forEach(t =>
+          t.classList.toggle('case-tile--hidden', t.dataset.industry !== filter)
+        );
+      }
+      closeCasePanel(false);
+    });
+  });
+
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && casePanel?.classList.contains('open') && !modal?.classList.contains('open')) {
       closeCasePanel();
