@@ -173,7 +173,7 @@ body:has(.nav__mobile.open) .nav__hamburger span:nth-child(3) { transform: trans
   transform: translateX(100%); transition: transform 0.4s var(--ease-o);
 }
 .nav__mobile.open { transform: translateX(0); }
-.nav__mobile .nav__link { font-size: 1rem; opacity: 0.65; }
+.nav__mobile .nav__link { font-size: 1rem; color: var(--ink); opacity: 0.7; }
 .nav__mobile .nav__link:hover, .nav__mobile .nav__link.active { opacity: 1; color: var(--terra); }
 
 /* ── Hero ──────────────────────────────────────────────── */
