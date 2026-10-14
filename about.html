@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -29,11 +29,13 @@
 <body>
 
   <nav class="nav scrolled" id="nav">
-    <a href="index.html"><img src="../logo/content-hearts-logo-long-heart.png" alt="Content Hearts" class="nav__logo-img"></a>
+    <a href="index.html"><img src="../logo/content-hearts-logo-long-heart-new.png" alt="Content Hearts" class="nav__logo-img"></a>
     <ul class="nav__links">
       <li><a href="index.html" class="nav__link">Home</a></li>
       <li><a href="services.html" class="nav__link">Services</a></li>
+      <li><a href="works.html" class="nav__link">Works</a></li>
       <li><a href="about.html" class="nav__link active">About</a></li>
+      <li><a href="blog.html" class="nav__link">Blog</a></li>
       <li><a href="contact.html" class="nav__link">Contact</a></li>
     </ul>
     <a href="contact.html" class="btn btn--ghost-dark" style="font-size:0.68rem;padding:0.75rem 1.5rem;">Work With Us</a>
@@ -42,10 +44,12 @@
     </button>
   </nav>
   <div class="nav__mobile" id="mobileNav">
-    <a href="index.html"><img src="../logo/content-hearts-logo-long-heart.png" alt="Content Hearts" class="nav__logo-img" style="margin-bottom:1rem;"></a>
+    <a href="index.html"><img src="../logo/content-hearts-logo-long-heart-new.png" alt="Content Hearts" class="nav__logo-img nav__logo-img--mobile" style="margin-bottom:1rem;"></a>
     <a href="index.html" class="nav__link">Home</a>
     <a href="services.html" class="nav__link">Services</a>
+    <a href="works.html" class="nav__link">Works</a>
     <a href="about.html" class="nav__link active">About</a>
+    <a href="blog.html" class="nav__link">Blog</a>
     <a href="contact.html" class="nav__link">Contact</a>
     <a href="contact.html" class="btn btn--dark mt-lg" style="width:fit-content">Work With Us</a>
   </div>
@@ -66,13 +70,17 @@
         <div class="fade-up">
           <span class="sh__eyebrow">our story</span>
           <h2 class="sh__title mt-sm">Built out of<br><em>frustration.</em></h2>
-          <p class="mt-md">We watched great brands get handed to agencies that treated every client the same — same formats, same trends, same strategy, different logo.</p>
-          <p class="mt-md">So we built something different. An agency where brand thinking comes first, always. Today we work with brands across lifestyle, healthcare, beauty, education, and professional services — helping them show up as distinctively online as they are in real life.</p>
+          <p class="mt-md">In mid-2023, our founder Grace was retrenched as Creative Director. Instead of staying quiet about it, she did the opposite — she said yes when CNA's Talking Point invited her to speak on their <em>Behind The Layoff</em> episode, becoming the only retrenched guest willing to show her face on national TV. What others saw as a mark of shame, she saw as a launchpad.</p>
+          <p class="mt-md">That episode aired. Content Hearts launched. After 12 years inside two of Singapore's biggest ad agencies, Grace had seen exactly what the big agency model gets wrong — and built something different. Brand-led thinking, with the speed and authenticity that social actually demands. Today we help brands across lifestyle, beauty, healthcare, and professional services show up online as distinctively as they do in real life.</p>
         </div>
         <div class="fade-up fade-up-d1">
-          <div class="about-img">
-            <img src="../images/DSC02920.jpg" alt="Grace, Founder of Content Hearts">
-            <div class="about-badge">Founded in Singapore ✦</div>
+          <div class="about-img about-img--carousel" id="storyCarousel">
+            <div class="abt-slide is-active"><img src="images/about/teoh-fam-portrait-(full-album)_0323.jpg" alt="Our story"></div>
+            <div class="abt-slide"><img src="images/about/9b302e2b-feed-4960-b047-95edea0b15a0.jpg" alt="Our story"></div>
+            <div class="abt-slide"><img src="images/about/img_6393.jpg" alt="Our story"></div>
+            <div class="abt-slide"><img src="images/about/screenshot-2026-04-22-at-6.27.01-pm.png" alt="Our story"></div>
+            <button class="abt-prev" aria-label="Previous">&#8249;</button>
+            <button class="abt-next" aria-label="Next">&#8250;</button>
           </div>
         </div>
       </div>
@@ -92,7 +100,7 @@
   <!-- ── Founder ───────────────────────────────────────────── -->
   <section class="section">
     <div class="container">
-      <div class="story-grid">
+      <div class="story-grid story-grid--founder">
         <div class="fade-up">
           <span class="sh__eyebrow">the founder</span>
           <h2 class="sh__title mt-sm">12 years of global agency experience,<br><em>brought to your brand.</em></h2>
@@ -100,61 +108,50 @@
           <p class="mt-md">After 12 years leading campaigns for brands like GSK, Abbott, and P&amp;G at global advertising agencies, Grace founded Content Hearts to help SMEs build emotional brand experiences, not just content. Her belief is simple: the most memorable brands don't chase trends — they own a voice, a look, and a belief system.</p>
         </div>
         <div class="fade-up fade-up-d1">
-          <div class="about-img">
-            <img src="../images/DSC02920.jpg" alt="Grace Gumala, Founder of Content Hearts">
-            <div class="about-badge">Founder &amp; Fractional CMO ✦</div>
+          <div class="founder-collage">
+            <div class="founder-collage__item"><img src="images/about/img_5317.jpg" alt="Grace Gumala"></div>
+            <div class="founder-collage__item"><img src="images/about/img_9639.jpg" alt="Grace Gumala"></div>
+            <div class="founder-collage__item"><img src="images/about/20190613-cpf57939.jpg" alt="Grace Gumala"></div>
+            <div class="founder-collage__item"><img src="images/about/img_4632.jpg" alt="Grace Gumala"></div>
+            <div class="founder-collage__item"><img src="images/about/4d7851bd-6352-4da5-8b74-90550de1a6fe.jpg" alt="Grace Gumala"></div>
+            <div class="founder-collage__item"><img src="images/about/img_5040.jpg" alt="Grace Gumala"></div>
+            <div class="founder-collage__item"><img src="images/about/92ec4646-e36a-4a96-9d27-d57f8edc701a.jpg" alt="Grace Gumala"></div>
+            <div class="founder-collage__item"><img src="images/about/img_9133.jpg" alt="Grace Gumala"></div>
+            <div class="founder-collage__item"><img src="images/about/img_5100.jpg" alt="Grace Gumala"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Values ─────────────────────────────────────────── -->
-  <section class="section">
+  <!-- ── Grace's Past Works ────────────────────────────── -->
+  <section class="section past-works-section">
     <div class="container">
-      <div class="values-grid">
-        <div class="values-grid__left fade-up">
-          <span class="sh__eyebrow">what we stand for</span>
-          <h2 class="sh__title mt-sm">Values we<br><em>actually live by.</em></h2>
-          <p class="sh__body">Not words on a wall. These shape every strategy, every piece of content, every client relationship.</p>
-        </div>
-        <div class="fade-up fade-up-d1">
-          <div class="val">
-            <div class="val__num">01</div>
-            <div>
-              <div class="val__title">Brand Before Content</div>
-              <p class="val__body">We never start with "what should we post." We start with who you are.</p>
-            </div>
-          </div>
-          <div class="val">
-            <div class="val__num">02</div>
-            <div>
-              <div class="val__title">Quality Over Quantity</div>
-              <p class="val__body">12 extraordinary posts beat 30 forgettable ones. Volume is not a strategy.</p>
-            </div>
-          </div>
-          <div class="val">
-            <div class="val__num">03</div>
-            <div>
-              <div class="val__title">Honest Partnership</div>
-              <p class="val__body">We tell our clients the truth, even when it's not what they want to hear.</p>
-            </div>
-          </div>
-          <div class="val">
-            <div class="val__num">04</div>
-            <div>
-              <div class="val__title">Relationships Over Metrics</div>
-              <p class="val__body">Numbers are a by-product of genuine connection — not the other way around.</p>
-            </div>
-          </div>
-          <div class="val">
-            <div class="val__num">05</div>
-            <div>
-              <div class="val__title">Always Evolving</div>
-              <p class="val__body">Social moves fast. We stay curious and never get comfortable.</p>
-            </div>
-          </div>
-        </div>
+      <div class="sh--center fade-up">
+        <span class="sh__eyebrow">grace's past works</span>
+        <h2 class="sh__title">Before <span style="white-space:nowrap">Content Hearts,</span><br><em>12 years in action.</em></h2>
+        <p class="sh__body">Award-winning campaigns for global brands at top-tier agencies.</p>
+      </div>
+    </div>
+    <div class="past-works-rail mt-xl">
+      <div class="past-works-track">
+        <div class="pw-item"><img src="https://vumbnail.com/367963352.jpg" alt="Campaign reel"></div>
+        <div class="pw-item"><img src="https://vumbnail.com/500748092.jpg" alt="Campaign reel"></div>
+        <div class="pw-item"><img src="https://vumbnail.com/501574682.jpg" alt="Campaign reel"></div>
+        <div class="pw-item"><img src="https://vumbnail.com/361237583.jpg" alt="Campaign reel"></div>
+        <div class="pw-item"><img src="https://vumbnail.com/238030366.jpg" alt="Campaign reel"></div>
+        <div class="pw-item"><img src="https://vumbnail.com/237358655.jpg" alt="Campaign reel"></div>
+        <div class="pw-item"><img src="https://vumbnail.com/236549123.jpg" alt="Campaign reel"></div>
+        <div class="pw-item"><img src="https://vumbnail.com/845834613.jpg" alt="Campaign reel"></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="pw-item" aria-hidden="true"><img src="https://vumbnail.com/367963352.jpg" alt=""></div>
+        <div class="pw-item" aria-hidden="true"><img src="https://vumbnail.com/500748092.jpg" alt=""></div>
+        <div class="pw-item" aria-hidden="true"><img src="https://vumbnail.com/501574682.jpg" alt=""></div>
+        <div class="pw-item" aria-hidden="true"><img src="https://vumbnail.com/361237583.jpg" alt=""></div>
+        <div class="pw-item" aria-hidden="true"><img src="https://vumbnail.com/238030366.jpg" alt=""></div>
+        <div class="pw-item" aria-hidden="true"><img src="https://vumbnail.com/237358655.jpg" alt=""></div>
+        <div class="pw-item" aria-hidden="true"><img src="https://vumbnail.com/236549123.jpg" alt=""></div>
+        <div class="pw-item" aria-hidden="true"><img src="https://vumbnail.com/845834613.jpg" alt=""></div>
       </div>
     </div>
   </section>
@@ -168,90 +165,73 @@
       </div>
       <div class="team-grid mt-xl">
         <div class="team-card fade-up fade-up-d1">
-          <div class="team-card__photo"><img src="../images/DSC02917.jpg" alt="Grace"></div>
+          <div class="team-card__photo"><img src="images/about/grace.png" alt="Grace"></div>
           <div class="team-card__name">Grace</div>
           <div class="team-card__role">CEO &amp; Creative Director</div>
         </div>
         <div class="team-card fade-up fade-up-d2">
-          <div class="team-card__photo"><div class="team-card__initial">D</div></div>
+          <div class="team-card__photo"><img src="images/about/divya.png" alt="Divya"></div>
           <div class="team-card__name">Divya</div>
           <div class="team-card__role">Business Development &amp; Director</div>
         </div>
         <div class="team-card fade-up fade-up-d3">
-          <div class="team-card__photo"><div class="team-card__initial">Z</div></div>
+          <div class="team-card__photo"><img src="images/about/zahidah.png" alt="Zahidah"></div>
           <div class="team-card__name">Zahidah</div>
           <div class="team-card__role">Creative &amp; Paid Ads Specialist</div>
         </div>
         <div class="team-card fade-up">
-          <div class="team-card__photo"><div class="team-card__initial">D</div></div>
+          <div class="team-card__photo"><img src="images/about/dione.png" alt="Dione"></div>
           <div class="team-card__name">Dione</div>
           <div class="team-card__role">Creative &amp; Design</div>
         </div>
         <div class="team-card fade-up fade-up-d1">
-          <div class="team-card__photo"><div class="team-card__initial">J</div></div>
+          <div class="team-card__photo"><img src="images/about/jeremiah.png" alt="Jeremiah"></div>
           <div class="team-card__name">Jeremiah</div>
           <div class="team-card__role">Videographer</div>
+        </div>
+        <div class="team-card fade-up fade-up-d2">
+          <div class="team-card__photo"><img src="images/about/rifqi.png" alt="Rifqi"></div>
+          <div class="team-card__name">Rifqi</div>
+          <div class="team-card__role">Lead Video Editor</div>
         </div>
       </div>
       <div class="team-grid--bottom">
         <div class="team-card fade-up fade-up-d1">
-          <div class="team-card__photo"><div class="team-card__initial">R</div></div>
-          <div class="team-card__name">Rifqi</div>
-          <div class="team-card__role">Lead Video Editor</div>
-        </div>
-        <div class="team-card fade-up fade-up-d2">
-          <div class="team-card__photo"><div class="team-card__initial">F</div></div>
+          <div class="team-card__photo"><img src="images/about/febri.png" alt="Febri"></div>
           <div class="team-card__name">Febri</div>
           <div class="team-card__role">Video Editor</div>
         </div>
-        <div class="team-card fade-up fade-up-d3">
-          <div class="team-card__photo"><div class="team-card__initial">F</div></div>
+        <div class="team-card fade-up fade-up-d2">
+          <div class="team-card__photo"><img src="images/about/fajar.png" alt="Fajar"></div>
           <div class="team-card__name">Fajar</div>
           <div class="team-card__role">Content Strategist</div>
-
+        </div>
+        <div class="team-card fade-up fade-up-d3">
+          <div class="team-card__photo"><img src="images/about/yohanna.png" alt="Yohanna"></div>
+          <div class="team-card__name">Yohanna</div>
+          <div class="team-card__role">Content Strategist</div>
         </div>
         <div class="team-card fade-up">
-          <div class="team-card__photo"><div class="team-card__initial">S</div></div>
+          <div class="team-card__photo"><img src="images/about/suluh.png" alt="Suluh"></div>
           <div class="team-card__name">Suluh</div>
           <div class="team-card__role">Video Editor</div>
         </div>
         <div class="team-card fade-up fade-up-d1">
-          <div class="team-card__photo"><div class="team-card__initial">B</div></div>
+          <div class="team-card__photo"><img src="images/about/brenda.png" alt="Brenda"></div>
           <div class="team-card__name">Brenda</div>
           <div class="team-card__role">Graphic Designer</div>
         </div>
         <div class="team-card fade-up fade-up-d2">
-          <div class="team-card__photo"><div class="team-card__initial">I</div></div>
+          <div class="team-card__photo"><img src="images/about/indri.png" alt="Indri"></div>
           <div class="team-card__name">Indri</div>
           <div class="team-card__role">Project Manager</div>
         </div>
       </div>
-      <div class="culture-photos fade-up">
-        <img src="../images/DSC01171.jpg" alt="The Content Hearts team">
-        <img src="../images/DSC01176.jpg" alt="The Content Hearts team">
+      <div class="culture-photo-single fade-up">
+        <img src="images/about/dsc01176.jpg" alt="The Content Hearts team">
       </div>
     </div>
   </section>
-
-  <!-- ── Stats ──────────────────────────────────────────── -->
-  <div class="stats-strip">
-    <div class="stats-strip__item fade-up">
-      <div class="stats-strip__num"><span data-count="50" data-suffix="+">50+</span></div>
-      <div class="stats-strip__label">Brands Grown</div>
-    </div>
-    <div class="stats-strip__item fade-up fade-up-d1">
-      <div class="stats-strip__num"><span data-count="15" data-suffix="+">15+</span></div>
-      <div class="stats-strip__label">Years of Expertise</div>
-    </div>
-    <div class="stats-strip__item fade-up fade-up-d2">
-      <div class="stats-strip__num"><span data-count="3" data-suffix="M+">3M+</span></div>
-      <div class="stats-strip__label">Organic Views Generated</div>
-    </div>
-    <div class="stats-strip__item fade-up fade-up-d3">
-      <div class="stats-strip__num"><span data-count="92" data-suffix="%">92%</span></div>
-      <div class="stats-strip__label">Client Retention</div>
-    </div>
-  </div>
 
   <!-- ── CTA ────────────────────────────────────────────── -->
   <section class="cta-banner">
@@ -271,7 +251,7 @@
     <div class="container">
       <div class="footer__grid">
         <div>
-          <img src="../logo/content-hearts-logo-long-heart.png" alt="Content Hearts" class="footer__logo-img">
+          <img src="../logo/content-hearts-logo-long-heart-new.png" alt="Content Hearts" class="footer__logo-img">
           <p class="footer__tagline">Brand-Led Social for brands that want to be remembered, not just seen.</p>
         </div>
         <div>
@@ -279,7 +259,9 @@
           <ul class="footer__links">
             <li><a href="index.html" class="footer__link">Home</a></li>
             <li><a href="services.html" class="footer__link">Services</a></li>
+            <li><a href="works.html" class="footer__link">Works</a></li>
             <li><a href="about.html" class="footer__link">About</a></li>
+            <li><a href="blog.html" class="footer__link">Blog</a></li>
             <li><a href="contact.html" class="footer__link">Contact</a></li>
           </ul>
         </div>
@@ -315,3 +297,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
